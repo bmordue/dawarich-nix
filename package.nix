@@ -40,11 +40,14 @@ let
 #      }) 
 #    ];
   };
+
+  tailwindcss-ruby-drv = import ./tailwindcss-ruby.nix { inherit pkgs ruby; };
+  tailwindcss-rails-drv = import ./tailwindcss-rails.nix { inherit pkgs ruby; railties = gems.railties; tailwindcss-ruby = tailwindcss-ruby-drv; };
 in
 stdenv.mkDerivation {
   name = "dawarich";
   inherit src;
-  buildInputs = [ gems ruby gems.wrappedRuby pkgs.rubyPackages_3_4.sqlite3 pkgs.tailwindcss nokogiriGem ] ++ gemDeps;
+  buildInputs = [ gems ruby gems.wrappedRuby pkgs.rubyPackages_3_4.sqlite3 pkgs.tailwindcss nokogiriGem tailwindcss-rails-drv ] ++ gemDeps;
   
   buildPhase = ''
     cp -r ${src}/. .
