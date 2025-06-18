@@ -12,6 +12,7 @@ let
     zlib
     nodejs
     libiconv
+    postgresql
   ];
   
   # Fetch source from GitHub
@@ -22,6 +23,17 @@ let
 #    sha256 = lib.fakeHash;
   };
   
+# RubyGems Management Strategy:
+# Most gems are managed via `pkgs.bundlerEnv` below. It uses the `Gemfile`,
+# `Gemfile.lock`, and the `gemset.nix` (which is generated from the lock file)
+# to fetch and build gems. `gemset.nix` contains the specific versions and SHA256 hashes.
+#
+# Gems that require special build steps, patches, or have complex system dependencies
+# not easily handled by `bundlerEnv` directly (e.g., nokogiri) are packaged individually
+# in separate .nix files (e.g., `nokogiri.nix`). These are then imported using `pkgs.callPackage`
+# and typically use `pkgs.fetchurl` to get their source from rubygems.org.
+# These individually packaged gems are then often included in the `buildInputs` of `bundlerEnv`
+# or the main derivation if they are needed during the build of other gems or the application itself.
   # Create a bundler environment with all dependencies
   gems = pkgs.bundlerEnv {
     name = "dawarich-gems";

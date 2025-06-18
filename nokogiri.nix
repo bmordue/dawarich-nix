@@ -4,10 +4,9 @@ stdenv.mkDerivation rec {
   pname = "nokogiri";
   version = "1.18.8"; # Fetched from gemset.nix
 
-  src = pkgs.fetchrubygem {
-    name = "nokogiri";
-    inherit version;
-    sha256 = "03i1vhm1x4qjil39lqrhjzc1b6rr6i5f522i98hsdz41n8pdvfin"; # Fetched from gemset.nix
+  src = pkgs.fetchurl {
+    url = "https://rubygems.org/gems/nokogiri-1.18.8.gem";
+    sha256 = "03i1vhm1x4qjil39lqrhjzc1b6rr6i5f522i98hsdz41n8pdvfin";
   };
 
   buildInputs = with pkgs; [
