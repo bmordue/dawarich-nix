@@ -4,9 +4,8 @@ pkgs.stdenv.mkDerivation {
   pname = "tailwindcss-ruby";
   version = "3.4.16";
 
-  src = pkgs.fetchrubygem {
-    name = "tailwindcss-ruby";
-    version = "3.4.16";
+  src = pkgs.fetchurl {
+    url = "https://rubygems.org/gems/tailwindcss-ruby-3.4.16.gem";
     sha256 = "1ip3r3nli0sbcs6qwk87jgk13b1q4sryd1c6iajqr6fy7zfj65g0";
   };
 
