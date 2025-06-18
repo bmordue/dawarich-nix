@@ -1848,27 +1848,6 @@
     };
     version = "0.15.0";
   };
-  tailwindcss-rails = {
-    dependencies = ["railties" "tailwindcss-ruby"];
-    groups = ["default"];
-    platforms = [];
-    source = {
-      remotes = ["https://rubygems.org"];
-      sha256 = "02vg7lbb95ixx9m6bgm2x0nrcm4dxyl0dcsd7ygg6z7bamz32yg8";
-      type = "gem";
-    };
-    version = "3.3.2";
-  };
-  tailwindcss-ruby = {
-    groups = ["default"];
-    platforms = [];
-    source = {
-      remotes = ["https://rubygems.org"];
-      sha256 = "1ip3r3nli0sbcs6qwk87jgk13b1q4sryd1c6iajqr6fy7zfj65g0";
-      type = "gem";
-    };
-    version = "3.4.16";
-  };
   thor = {
     groups = ["default" "development" "test"];
     platforms = [];
