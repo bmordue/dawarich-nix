@@ -2,6 +2,8 @@
 
 let
   ruby = pkgs.ruby_3_4;
+
+  nokogiriGem = pkgs.callPackage ./nokogiri.nix { inherit ruby; };
   
   # Define system packages needed for gem compilation
   gemDeps = with pkgs; [
@@ -24,7 +26,7 @@ let
   gems = pkgs.bundlerEnv {
     name = "dawarich-gems";
     inherit ruby;
-    buildInputs = [ pkgs.rubyPackages_3_4.nokogiri];
+    buildInputs = [ nokogiriGem ];
     gemdir = ./.;  # Points to current directory where Gemfile, Gemfile.lock, and gemset.nix are located
     
     # Pass build flags to bundler
@@ -45,7 +47,7 @@ in
 stdenv.mkDerivation {
   name = "dawarich";
   inherit src;
-  buildInputs = [ gems ruby gems.wrappedRuby pkgs.rubyPackages_3_4.sqlite3 pkgs.tailwindcss tailwindcss-rails-drv ] ++ gemDeps; #pkgs.rubyPackages_3_4.nokogiri] ++ gemDeps;
+  buildInputs = [ gems ruby gems.wrappedRuby pkgs.rubyPackages_3_4.sqlite3 pkgs.tailwindcss nokogiriGem tailwindcss-rails-drv ] ++ gemDeps;
   
   buildPhase = ''
     cp -r ${src}/. .
