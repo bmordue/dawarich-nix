@@ -1032,17 +1032,6 @@
     };
     version = "2.7.4";
   };
-  nokogiri = {
-    dependencies = ["racc"];
-    groups = ["default" "development" "test"];
-    platforms = [];
-    source = {
-      remotes = ["https://rubygems.org"];
-      sha256 = "03i1vhm1x4qjil39lqrhjzc1b6rr6i5f522i98hsdz41n8pdvfin";
-      type = "gem";
-    };
-    version = "1.18.8";
-  };
   oj = {
     dependencies = ["bigdecimal" "ostruct"];
     groups = ["default"];
@@ -1277,16 +1266,6 @@
       type = "gem";
     };
     version = "1.4.0";
-  };
-  racc = {
-    groups = ["default" "development" "test"];
-    platforms = [];
-    source = {
-      remotes = ["https://rubygems.org"];
-      sha256 = "0byn0c9nkahsl93y9ln5bysq4j31q8xkf2ws42swighxd4lnjzsa";
-      type = "gem";
-    };
-    version = "1.8.1";
   };
   rack = {
     groups = ["default" "development" "test"];
@@ -1847,27 +1826,6 @@
       type = "gem";
     };
     version = "0.15.0";
-  };
-  tailwindcss-rails = {
-    dependencies = ["railties" "tailwindcss-ruby"];
-    groups = ["default"];
-    platforms = [];
-    source = {
-      remotes = ["https://rubygems.org"];
-      sha256 = "02vg7lbb95ixx9m6bgm2x0nrcm4dxyl0dcsd7ygg6z7bamz32yg8";
-      type = "gem";
-    };
-    version = "3.3.2";
-  };
-  tailwindcss-ruby = {
-    groups = ["default"];
-    platforms = [];
-    source = {
-      remotes = ["https://rubygems.org"];
-      sha256 = "1ip3r3nli0sbcs6qwk87jgk13b1q4sryd1c6iajqr6fy7zfj65g0";
-      type = "gem";
-    };
-    version = "3.4.16";
   };
   thor = {
     groups = ["default" "development" "test"];
